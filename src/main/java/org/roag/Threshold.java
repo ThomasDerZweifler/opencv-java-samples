@@ -21,7 +21,6 @@ public class Threshold
         {
             long starttime=new Date().getTime();
             System.out.println("Start time "+0);
-            System.setProperty("java.library.path", "/opt/local/share/OpenCV/java");
             System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
             Mat source = Imgcodecs.imread("salmon_spot.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
             Mat destination = new Mat(source.rows(), source.cols(), source.type());
