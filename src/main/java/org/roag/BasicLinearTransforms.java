@@ -7,6 +7,10 @@ import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 
+/**
+ * Just copied this code from OpenCv documentation
+ * https://docs.opencv.org/3.4.3/d3/dc1/tutorial_basic_linear_transform.html
+ */
 class BasicLinearTransforms {
 
     private byte saturate(double val) {
@@ -16,7 +20,7 @@ class BasicLinearTransforms {
     }
 
     public void run(String[] args) {
-        String imagePath = args.length > 0 ? args[0] : "salmon_spot.jpg";
+        String imagePath = args.length > 0 ? args[0] : "src/main/resources/salmon_spot.jpg";
         Mat image = Imgcodecs.imread(imagePath);
         if (image.empty()) {
             System.out.println("Empty image: " + imagePath);
