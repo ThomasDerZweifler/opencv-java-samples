@@ -26,6 +26,7 @@ hs_err_pid*
 # IDEA files #
 .idea/
 *.iml
+.DS_Store
 
 # Processed images folder #
 output
