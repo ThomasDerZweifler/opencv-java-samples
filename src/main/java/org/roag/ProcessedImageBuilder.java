@@ -42,7 +42,7 @@ public class ProcessedImageBuilder {
     public ProcessedImageBuilder blur(int size) {
         LOG.info("===> Blur processing started");
         Mat dstMat = new Mat(currentMat.rows(), currentMat.cols(), currentMat.type());
-        Imgproc.medianBlur(currentMat, dstMat, size);
+        Imgproc.blur(currentMat, dstMat, new Size(size, size));
         currentMat = dstMat;
         LOG.info("<=== Blur processing finished");
         return this;
@@ -51,7 +51,7 @@ public class ProcessedImageBuilder {
     public ProcessedImageBuilder threshold(int threshold) {
         LOG.info("===> Threshold processing started");
         Mat dstMat = new Mat(currentMat.rows(), currentMat.cols(), currentMat.type());
-        Imgproc.threshold(currentMat, dstMat, threshold, 187, Imgproc.THRESH_BINARY_INV);
+        Imgproc.threshold(currentMat, dstMat, threshold, 187, Imgproc.THRESH_TOZERO_INV);
         currentMat = dstMat;
         LOG.info("<=== Threshold processing finished");
         return this;
@@ -112,27 +112,5 @@ public class ProcessedImageBuilder {
         return this.currentMat;
     }
 
-    public static void main(String[] args) {
-        System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
-
-        new ProcessedImageBuilder()
-                .withSource("src/main/resources/salmon_spot.jpg")
-                .withDestination("salmon_threshold.jpg")
-                .threshold(67)
-                .build();
-
-        new ProcessedImageBuilder()
-                .withSource("src/main/resources/salmon_spot.jpg")
-                .withDestination("salmon_blur.jpg")
-                .blur(25)
-                .threshold(90)
-                .build();
-
-        new ProcessedImageBuilder()
-                .withSource("src/main/resources/salmon_spot.jpg")
-                .withDestination("salmon_erode.jpg")
-                .erode(10)
-                .build();
-    }
 }
 

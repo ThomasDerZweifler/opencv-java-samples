@@ -14,6 +14,34 @@ public class Main {
         System.out.println("mat = " + mat.dump());
 */
 
+        new ProcessedImageBuilder()
+                .withSource("src/main/resources/salmon_spot.jpg")
+                .withDestination("salmon_threshold.jpg")
+                .threshold(87)
+                .build();
+
+        new ProcessedImageBuilder()
+                .withSource("src/main/resources/salmon_spot.jpg")
+                .withDestination("salmon_blur.jpg")
+                .blur(7)
+                .build();
+
+        new ProcessedImageBuilder()
+                .withSource("src/main/resources/salmon_spot.jpg")
+                .withDestination("salmon_dilate.jpg")
+                .blur(7)
+                .threshold(90)
+                .erode(12)
+                .dilate(25)
+                .build();
+
+        new ProcessedImageBuilder()
+                .withSource("src/main/resources/salmon_spot.jpg")
+                .withDestination("salmon_erode.jpg")
+                .erode(12)
+                .build();
+
+
         new SpotDetector().spot();
     }
 }
